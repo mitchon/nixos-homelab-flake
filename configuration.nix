@@ -3,6 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./disko-config.nix
   ];
 
   boot.loader = {
@@ -33,6 +34,9 @@
     isNormalUser = true;
     uid = 1000;
     extraGroups = [ user "wheel" "docker" ];
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKvu0QbEP/ADt7+XBL2UHncZtPxgXuCTgQt6hufCk0Tl mitchanx@think-nix"
+    ];
   };
 
   users.groups.${user} = {
@@ -47,6 +51,8 @@
     curl
     git
   ];
+
+  services.qemuGuest.enable = true;
 
   services.openssh = {
     enable = true;
