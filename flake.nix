@@ -13,7 +13,7 @@
     hostname = "homelab";
   in
   {
-    nixosConfiguration.${hostname} = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
       system = system;
       specialArgs = { inherit inputs stateVersion user hostname; };
       modules = [
