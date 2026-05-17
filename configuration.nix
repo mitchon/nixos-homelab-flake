@@ -1,9 +1,9 @@
-{ config, lib, pkgs, stateVersion, user, hostname, ... }:
+{ pkgs, stateVersion, user, hostname, ... }:
 
 {
   imports = [
     ./hardware-configuration.nix
-    ./disko-config.nix
+    ./disko-configuration.nix
   ];
 
   boot.loader = {
@@ -30,13 +30,16 @@
   
   time.timeZone = "Europe/Moscow";
 
-  users.users.${user} = {
-    isNormalUser = true;
-    uid = 1000;
-    extraGroups = [ user "wheel" "docker" ];
-    openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKvu0QbEP/ADt7+XBL2UHncZtPxgXuCTgQt6hufCk0Tl mitchanx@think-nix"
-    ];
+  users.users = {
+    ${user} = {
+      isNormalUser = true;
+      hashedPassword = "$6$de/UeqWKkV/fcHBT$b4aR5evqxWWz22S89iVik/rpszxXbu.jN/cL33BCZW.IT1VyPjYx6rWnCATxdAdTwrleLGFtSy095xjwjo3VA0";
+      uid = 1000;
+      extraGroups = [ user "wheel" "docker" ];
+      openssh.authorizedKeys.keys = [
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKvu0QbEP/ADt7+XBL2UHncZtPxgXuCTgQt6hufCk0Tl mitchanx@think-nix"
+      ];
+    };
   };
 
   users.groups.${user} = {
