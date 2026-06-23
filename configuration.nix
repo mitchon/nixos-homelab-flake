@@ -39,6 +39,7 @@
       extraGroups = [ user "wheel" "docker" ];
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKvu0QbEP/ADt7+XBL2UHncZtPxgXuCTgQt6hufCk0Tl mitchanx@think-nix"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL9SPeg/wwqfMhfagx+atX/dq8IMTU8jipXzHiSSkxg2 nugget@hp-deep-fryer"
       ];
     };
   };
